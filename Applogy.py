@@ -31,8 +31,8 @@ st.markdown("""
 <p style='text-align:center'>
     <b>Click below to play music:</b><br>
     <audio controls>
-      <source src="https://open.spotify.com/track/2plbrEY59IikOBgBGLjaoe?si=0368e6859c9e43fe" type="audio/mpeg">
-      Your browser does not support the audio element.
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 </p>
 """, unsafe_allow_html=True)
