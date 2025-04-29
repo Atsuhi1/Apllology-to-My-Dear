@@ -3,6 +3,55 @@ import time
 
 st.set_page_config(page_title="Apology to Shiwani ❤️", page_icon="💌", layout="centered")
 
+# Floating hearts animation
+st.markdown("""
+<style>
+.heart {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  transform: rotate(45deg);
+  animation: float 8s infinite ease-in;
+  z-index: 9999;
+}
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+@keyframes float {
+  0% {transform: translateY(100vh) rotate(45deg);}
+  100% {transform: translateY(-10vh) rotate(45deg);}
+}
+</style>
+
+<script>
+const numHearts = 30;
+for (let i = 0; i < numHearts; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 8 + "s";
+    heart.style.opacity = Math.random();
+    heart.style.transform = "scale(" + (Math.random() * 0.7 + 0.3) + ")";
+    document.body.appendChild(heart);
+}
+</script>
+""", unsafe_allow_html=True)
+
+# Typing animation
 def type_writer(message, delay=0.02):
     placeholder = st.empty()
     typed_text = ""
@@ -11,8 +60,10 @@ def type_writer(message, delay=0.02):
         placeholder.markdown(typed_text, unsafe_allow_html=True)
         time.sleep(delay)
 
+# Title
 st.markdown("<h1 style='text-align: center;'>💖 A Personal Apology to Shiwani 💖</h1>", unsafe_allow_html=True)
 
+# Button and message
 if st.button("Send Apology from Arnav"):
     apology_message = """
 <p style='font-size: 18px; line-height: 1.6'>
