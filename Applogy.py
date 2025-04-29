@@ -31,7 +31,7 @@ st.markdown("""
 <p style='text-align:center'>
     <b>Click below to play music:</b><br>
     <audio controls>
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      <source src="https://open.spotify.com/track/2plbrEY59IikOBgBGLjaoe?si=0368e6859c9e43fe" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 </p>
