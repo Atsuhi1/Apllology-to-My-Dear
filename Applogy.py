@@ -1,38 +1,40 @@
-
 import streamlit as st
 import time
 
 st.set_page_config(page_title="Apology to Shiwani ❤️", page_icon="💌", layout="centered")
 
-# Floating hearts (CSS-only, no JavaScript)
+# Improved floating hearts with different styles
 st.markdown("""
 <style>
 @keyframes float {
-  0% { transform: translateY(0) rotate(0); opacity: 1; }
-  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-100vh) rotate(360deg) scale(1.5); opacity: 0; }
 }
 .heart-float {
   position: fixed;
   bottom: 0;
-  font-size: 30px;
-  color: red;
-  animation: float 8s linear infinite;
+  color: rgba(255, 0, 100, 0.8);
   z-index: 9999;
+  animation-name: float;
+  animation-timing-function: ease-in-out;
 }
 """ + "".join([
-    f".heart-{i} {{ left: {i * 10 + 5}%; animation-delay: {i * 0.8}s; }}\n"
+    f".heart-{i} {{ left: {i * 9 + 3}%; font-size: {20 + (i%3)*10}px; animation-duration: {6 + (i%4)}s; animation-delay: {i * 0.6}s; }}\n"
     for i in range(10)
 ]) + "</style>\n" + "".join([
     f'<div class="heart-float heart-{i}">❤️</div>\n'
     for i in range(10)
 ]), unsafe_allow_html=True)
 
-# Background music (looped)
+# Music play button (manual click for browser compatibility)
 st.markdown("""
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<p style='text-align:center'>
+    <b>Click below to play music:</b><br>
+    <audio controls>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+</p>
 """, unsafe_allow_html=True)
 
 # Typing animation
@@ -78,4 +80,3 @@ With all my heart,<br>
     type_writer(apology_message)
 
 st.markdown("<br><hr><center>Made with love by Arnav</center>", unsafe_allow_html=True)
-
