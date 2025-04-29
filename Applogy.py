@@ -1,54 +1,38 @@
+
 import streamlit as st
 import time
 
 st.set_page_config(page_title="Apology to Shiwani ❤️", page_icon="💌", layout="centered")
 
-# Floating hearts animation
+# Floating hearts (CSS-only, no JavaScript)
 st.markdown("""
 <style>
-.heart {
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+.heart-float {
   position: fixed;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  transform: rotate(45deg);
-  animation: float 8s infinite ease-in;
+  bottom: 0;
+  font-size: 30px;
+  color: red;
+  animation: float 8s linear infinite;
   z-index: 9999;
 }
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-}
-.heart::before {
-  top: -10px;
-  left: 0;
-}
-.heart::after {
-  left: -10px;
-  top: 0;
-}
-@keyframes float {
-  0% {transform: translateY(100vh) rotate(45deg);}
-  100% {transform: translateY(-10vh) rotate(45deg);}
-}
-</style>
+""" + "".join([
+    f".heart-{i} {{ left: {i * 10 + 5}%; animation-delay: {i * 0.8}s; }}\n"
+    for i in range(10)
+]) + "</style>\n" + "".join([
+    f'<div class="heart-float heart-{i}">❤️</div>\n'
+    for i in range(10)
+]), unsafe_allow_html=True)
 
-<script>
-const numHearts = 30;
-for (let i = 0; i < numHearts; i++) {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDelay = Math.random() * 8 + "s";
-    heart.style.opacity = Math.random();
-    heart.style.transform = "scale(" + (Math.random() * 0.7 + 0.3) + ")";
-    document.body.appendChild(heart);
-}
-</script>
+# Background music (looped)
+st.markdown("""
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 """, unsafe_allow_html=True)
 
 # Typing animation
